@@ -95,7 +95,7 @@ public class Program {
 		}
 		Code tempCode;
 		while(!in.isEOF(2) || bufCounter!=0) {
-			if(bufCounter==0) {
+			if(bufCounter==0 && !in.isEOF(2)) {
 				temp = in.get();
 				buf<<=8;
 				buf+=temp;
