@@ -8,4 +8,12 @@ public class CodeList {
 	void add(Code c) {
 		list.add(c);
 	}
+	Code seekKod(Code c) {
+		for(Code i : list) {
+			if(i.equals(c)) {
+				return i;
+			}
+		}
+		return null;
+	}
 }
