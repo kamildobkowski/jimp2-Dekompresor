@@ -1,7 +1,9 @@
 package com.jimp2;
+import org.jetbrains.annotations.NotNull;
+
 import java.io.*;
 import java.util.*;
-public class InputFile{
+public class InputFile {
 	File inputFile;
 	FileInputStream input;
 	private final long size;
@@ -16,11 +18,25 @@ public class InputFile{
 		}
 	}
 
-	byte get() throws RuntimeException{
+	char get() throws RuntimeException{
 		try{
 			bytesGone++;
 			if(bytesGone==size) throw new IOException();
-			return (byte) input.read();
+			return (char) input.read();
+		}
+		catch(IOException e) {
+			throw new RuntimeException(e);
+		}
+	}
+	String get(int n) {
+		try{
+			StringBuilder s = new StringBuilder();
+			for(int i = 0; i<n; i++) {
+				bytesGone++;
+				if(bytesGone==size) throw new IOException();
+				s.append(input.read());
+			}
+			return s.toString();
 		}
 		catch(IOException e) {
 			throw new RuntimeException(e);
@@ -29,6 +45,9 @@ public class InputFile{
 
 	boolean isEOF(int bytesToEnd) {
 		return bytesGone==size-bytesToEnd;
+	}
+	boolean isEOF() {
+		return this.bytesGone==this.size;
 	}
 	void skip(int n) {
 		try {

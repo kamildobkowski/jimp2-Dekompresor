@@ -8,14 +8,15 @@ public class OutputFile {
 	OutputFile(String name) {
 		try {
 			outputFile = new File(name);
-			FileOutputStream outputStream = new FileOutputStream(outputFile);
+			output = new FileOutputStream(outputFile);
 		}
 		catch (IOException e) {
+			System.out.println("Output file error");
 			throw new RuntimeException(e);
 		}
 	}
 
-	void Write(int bajt) throws RuntimeException{
+	void Write(char bajt) throws RuntimeException{
 		try {
 			output.write(bajt);
 		}
