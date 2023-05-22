@@ -21,11 +21,11 @@ public class Program {
 
 	static void print_tree() {
 
-		Code[] kody = dictionary.lista.toArray(new Code[0]);
+		Code[] kody = dictionary.getLista().toArray(new Code[0]);
 		TreeNode root = new TreeNode(0);
 		for (Code kk : kody) {
 			TreeNode temp = root;
-			for (Boolean b : kk.kod) {
+			for (Boolean b : kk.getKod()) {
 				if (b) {//1
 					if (temp.right == null)
 						temp.right = new TreeNode(1);
