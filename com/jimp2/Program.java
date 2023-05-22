@@ -14,7 +14,31 @@ public class Program {
 		}
 		decompress(in, out);
 
+		print_tree();
 
+	}
+	static CodeList dictionary;
+
+	static void print_tree() {
+
+		Code[] kody = dictionary.lista.toArray(new Code[0]);
+		TreeNode root = new TreeNode(0);
+		for (Code kk : kody) {
+			TreeNode temp = root;
+			for (Boolean b : kk.kod) {
+				if (b) {//1
+					if (temp.right == null)
+						temp.right = new TreeNode(1);
+					temp = temp.right;
+				} else {//0
+					if (temp.left == null)
+						temp.left = new TreeNode(0);
+					temp = temp.left;
+				}
+			}
+			temp.right = new TreeNode((int) kk.getBajt());
+		}
+		root.print();
 
 	}
 	static void decompress(InputFile in, OutputFile out) {
@@ -39,7 +63,7 @@ public class Program {
 		codedWordLength <<=8;
 		codedWordLength += in.get();
 
-		CodeList dictionary = new CodeList();
+		dictionary = new CodeList();
 		int mostSigBit=0, tempMostSigBit=0;
 		buf=0;
 		longBuf=0;

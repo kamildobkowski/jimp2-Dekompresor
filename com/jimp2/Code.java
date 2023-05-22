@@ -2,7 +2,7 @@ package com.jimp2;
 import java.util.Collections;
 import java.util.Vector;
 public class Code {
-	private Vector <Boolean> kod;
+	public Vector <Boolean> kod;
 	private char bajt;
 
 	Code() {

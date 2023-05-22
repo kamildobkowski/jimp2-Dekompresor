@@ -4,7 +4,7 @@ public class CodeList {
 	private Map<Vector<Boolean>, Code> mapa;
 
 	//used to create a Tree object and to print all the values
-	private List<Code> lista;
+    public List<Code> lista;
 
 	private int length = 0;
 	public int getLength() {
